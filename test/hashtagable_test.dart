@@ -114,6 +114,12 @@ void main() {
     expect(detector.getDetections(source).length, 2);
     expect(detector.getDetections(source)[0].style!.color, decoratedColor);
   });
+  
+  test("russian tags parsed correctly", () {
+    final hashTagList = extractHashTags("#привет #Россия это работает? does it work?");
+    expect(hashTagList[0], "#привет");
+    expect(hashTagList[1], "#Россия");
+  });
 
   test("check if functions are working correctly", () {
     final hasHashtagsTrue = hasHashTags("#hashtag hashtag");
